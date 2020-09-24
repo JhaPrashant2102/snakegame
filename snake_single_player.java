@@ -1,6 +1,6 @@
 import java.lang.*;
 import java.util.*;
-public class UC1{
+public class snake_single_player{
 	public static final int NO_PLAY_CASE = 0;
 	public static final int LADDER_CASE = 1;
 	public static final int SNAKE_CASE = 2;
@@ -15,26 +15,24 @@ public class UC1{
 			rand_pos = ((int)Math.floor(Math.random()*10)%3);
 			rand_num = ((int)Math.floor(Math.random()*10)%6)+1;
 			NO_OF_TIMES_DICE_ROLLED++;
-			if(pos<0){
-				pos = 0;
-				continue;
-			}
-			if(pos+rand_num<=100){
-				pos+=rand_num;
-			}
 
 			if(pos==100){
-				System.out.println("player position: "+pos+"  NO_OF_TIMES_DICE_ROLLED: "+NO_OF_TIMES_DICE_ROLLED+" Player won");
+				System.out.println(" Player won");
 				break;
 			}
 			if(rand_pos==NO_PLAY_CASE){
 				continue;
 			}
-			if(rand_pos==LADDER_CASE){
+			else if(rand_pos==LADDER_CASE){			
+				if(pos+rand_num<=100)	
 				pos+=rand_num;
 
 			}
-			if(rand_pos==SNAKE_CASE){
+			else{
+				if(pos-rand_num<0){
+				pos=0;
+				continue;
+				}
 				pos-=rand_num;
 			}
 
